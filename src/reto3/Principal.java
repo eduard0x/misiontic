@@ -263,9 +263,9 @@ public class Principal {
 		return new Cliente();
 	}
 	public static void listarClientes() {
-		
+		System.out.println("******  CLIENTES  ******");
 		for(int i = 0; i<clientes.size();i++) {
-			clientes.get(i).toString();
+			System.out.println(clientes.get(i).toString());
 		}
 	}
 	
@@ -513,6 +513,74 @@ public class Principal {
 				pedidos.get(i).generarInforme();
 			}
 		}
+	}
+	
+	public void cargarInformacionPrueba() {
+		
+		
+		
+		
+		//Cuentas
+		Cuenta cuenta1 = new Cuenta("123",1000);
+		Cuenta cuenta2 = new Cuenta("456",10000);
+		Cuenta cuenta3 = new Cuenta("789",100000);
+		Cuenta cuenta4 = new Cuenta("101",1000000);
+		Cuenta cuenta5 = new Cuenta("111",10000000);
+		Cuenta cuenta6 = new Cuenta("121",100000000);
+		
+		//Definición de cuentas
+		
+		ArrayList<Cuenta> cuentas1 = new ArrayList<Cuenta>();
+		ArrayList<Cuenta> cuentas2 = new ArrayList<Cuenta>();
+		ArrayList<Cuenta> cuentas3 = new ArrayList<Cuenta>();
+				
+		//Asignación de valores.
+		
+		cuentas1.add(cuenta1);
+		cuentas1.add(cuenta4);
+		cuentas1.add(cuenta3);
+		
+		cuentas2.add(cuenta6);
+		
+		
+		cuentas1.add(cuenta5);
+		cuentas1.add(cuenta2);
+		
+		//Clientes
+		
+		Cliente c1 = new Cliente("123","Edu","Bog","320","m@g.c",cuentas1);
+		Cliente c2 = new Cliente("154","Rib","Cuc","321","n@g.c",cuentas2);
+		Cliente c3 = new Cliente("168","Eto","Med","322","mo@g.c",cuentas3);
+		Cliente c4 = new Cliente("198","fri","Cal","323","p@g.c",cuentas2);
+		Cliente c5 = new Cliente("124","Des","Sol","324","m@g.c",cuentas1);
+		
+		
+		//Productos
+		
+		Producto p1 = new Producto("1", 2000, 2500, 100, 20, true);
+		Producto p2 = new Producto("2", 43100, 44000, 200, 120, true);
+		Producto p3 = new Producto("3", 92000, 100000, 10, 2, true);
+		Producto p4 = new Producto("4", 73000, 75000, 10, 2, true);
+		Producto p5 = new Producto("5", 12000, 15000, 120, 50, true);
+		Producto p6 = new Producto("6", 2000, 4000, 120, 20, true);
+		Producto p7 = new Producto("7", 62000, 70000, 100, 20, true);
+		Producto p8 = new Producto("8", 123000, 130000, 18, 4, true);
+		Producto p9 = new Producto("9", 212000, 250000, 14, 4, true);
+		Producto p10 = new Producto("10", 12000, 12500, 23, 7, true);
+		
+		//Subpedidos
+		
+		HashMap<Producto,Double> subpedidos1 = new HashMap();
+			subpedidos1.put(p1, 2.0);
+			subpedidos1.put(p2, 20.0);
+			subpedidos1.put(p3, 10.0);
+			subpedidos1.put(p4, 1.0);
+			subpedidos1.put(p5, 12.0);
+		
+		//Pedidos
+		
+		Pedido ped1 = new Pedido(c1,subpedidos1);
+	
 	}
 
 }

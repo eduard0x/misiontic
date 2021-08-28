@@ -1,5 +1,8 @@
 package reto3;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Cliente {
 
 	String identificacion;
@@ -7,9 +10,9 @@ public class Cliente {
 	String direccion;
 	String telefono;
 	String correo;
-	Cuenta[] cuentas;
+	ArrayList<Cuenta> cuentas;
 	
-	public Cliente(String identificacion, String nombre, String direccion, String telefono, String correo, Cuenta[] cuentas) {
+	public Cliente(String identificacion, String nombre, String direccion, String telefono, String correo, ArrayList<Cuenta> cuentas) {
 		super();
 		this.identificacion = identificacion;
 		this.nombre = nombre;
@@ -34,8 +37,8 @@ public class Cliente {
 	
 	private boolean dinero_disponible() {
 		double dinero = 0;
-		for(int i=0; i<cuentas.length;i++) {
-			dinero += cuentas[i].cantidad_dinero;
+		for(int i=0; i<cuentas.size();i++) {
+			dinero += cuentas.get(i).cantidad_dinero;
 		}
 		if (dinero>0) {
 			return true;
@@ -53,6 +56,15 @@ public class Cliente {
 		
 		return mayor;
 	}
+
+	@Override
+	public String toString() {
+		return "Cliente [identificacion=" + identificacion + ", nombre=" + nombre + ", direccion=" + direccion
+				+ ", telefono=" + telefono + ", correo=" + correo + ", cuentas=" + cuentas + "]";
+	}
+
+	
+	
 	
 	
 	

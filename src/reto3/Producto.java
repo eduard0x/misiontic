@@ -3,13 +3,13 @@ package reto3;
 public class Producto {
 	
 	String codigo;
-	int precio_compra;
-	int precio_venta;
-	int cantidad_bodega;
-	int cantidad_minima;
+	double precio_compra;
+	double precio_venta;
+	double cantidad_bodega;
+	double cantidad_minima;
 	boolean IVA;
 	
-	public Producto(String codigo, int precio_compra, int precio_venta, int cantidad_bodega, int cantidad_minima,
+	public Producto(String codigo, double precio_compra, double precio_venta, double cantidad_bodega, double cantidad_minima,
 			boolean iVA) {
 		super();
 		this.codigo = codigo;
@@ -30,8 +30,6 @@ public class Producto {
 		IVA = true;
 	}
 	
-	
-
 
 	public String getCodigo() {
 		return codigo;
@@ -41,7 +39,7 @@ public class Producto {
 		this.codigo = codigo;
 	}
 
-	public int getPrecio_compra() {
+	public double getPrecio_compra() {
 		return precio_compra;
 	}
 
@@ -49,7 +47,7 @@ public class Producto {
 		this.precio_compra = precio_compra;
 	}
 
-	public int getPrecio_venta() {
+	public double getPrecio_venta() {
 		return precio_venta;
 	}
 
@@ -57,7 +55,7 @@ public class Producto {
 		this.precio_venta = precio_venta;
 	}
 
-	public int getCantidad_bodega() {
+	public double getCantidad_bodega() {
 		return cantidad_bodega;
 	}
 
@@ -65,7 +63,7 @@ public class Producto {
 		this.cantidad_bodega = cantidad_bodega;
 	}
 
-	public int getCantidad_minima() {
+	public double getCantidad_minima() {
 		return cantidad_minima;
 	}
 
