@@ -79,5 +79,14 @@ public class Producto {
 		IVA = iVA;
 	}
 
+	@Override
+	public String toString() {
+		return "Producto [codigo=" + codigo + ", precio_compra=" + precio_compra + ", precio_venta=" + precio_venta
+				+ ", cantidad_bodega=" + cantidad_bodega + ", cantidad_minima=" + cantidad_minima + ", IVA=" + IVA
+				+ "]";
+	}
+	
+	
+
 	
 }

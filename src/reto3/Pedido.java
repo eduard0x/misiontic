@@ -25,15 +25,18 @@ public class Pedido {
 	}
 	
 	public void administrar() {
-		if(cliente.cuentas.length>=0) {
-			if(cliente.cuentaMayorDinero()>=total_con_iva) {
-				estado = "cobrados";
+		if(estado.equals("Aprobado")){
+			if(cliente.cuentas.size()>=0) {
+				if(cliente.cuentaMayorDinero()>=total_con_iva) {
+					estado = "cobrado";
+				}else {
+					estado = "rechazado";
+				}
 			}else {
-				estado = "rechazado";
+				estado ="rechazado";
 			}
-		}else {
-			estado ="rechazado";
 		}
+		
 	}
 	
 	public Cliente getCliente() {
@@ -81,9 +84,12 @@ public class Pedido {
 		this.total_sin_iva = total_factura_sin_iva;
 		this.total_con_iva = total_factura_con_iva;
 		
-		System.out.println("PRECIO TOTAL SIN IVA"+ total_factura_sin_iva );
-		System.out.println("PRECIO TOTAL CON IVA"+ total_factura_con_iva);
+		System.out.println("PRECIO TOTAL SIN IVA: "+ total_factura_sin_iva );
+		System.out.println("PRECIO TOTAL CON IVA: "+ total_factura_con_iva);
 		
+		System.out.println();
+	
+		System.out.println("Estado: "+estado);
 		
 	}
 	

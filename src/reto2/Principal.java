@@ -15,15 +15,12 @@ public class Principal {
     
     public static void main(String[] args){
         Scanner teclado = new Scanner(System.in);
-        int cantidad = teclado.nextInt();
-        if(cantidad==0){
-            System.out.println("La lista de valores no puede ser vacia.");
-        }
-        else{
+        int cantidad = Integer.parseInt(teclado.nextLine());
+       
             double[] valores = new double [cantidad];
             for(int i=0;i<valores.length;i++){
-                Scanner teclado2 = new Scanner(System.in);
-                valores[i] = teclado2.nextDouble();
+                
+                valores[i] = Double.parseDouble(teclado.nextLine());
             }
             double promedio = sacarPromedio(valores);
             String nivelRiesgo = nivelRiesgo(promedio);
@@ -35,7 +32,7 @@ public class Principal {
             System.out.println(entidad);
             System.out.println(nivelRiesgoAlto);
 
-        }
+        
        
     }
     

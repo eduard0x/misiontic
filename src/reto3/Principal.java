@@ -18,6 +18,9 @@ public class Principal {
 	
 	public  static void main(String[] args) {
 		
+                Tienda ti = new Tienda();
+                
+		cargarInformacionPrueba();
 		mostrarMenu();
 		Scanner teclado = new Scanner(System.in);
 		
@@ -27,20 +30,20 @@ public class Principal {
 			case "1": agregarCliente();
 			break;
 			case "2": 
-				System.out.println("Ingrese el número de identificación del cliente a eliminar: ");
+				System.out.println("Ingrese el nï¿½mero de identificaciï¿½n del cliente a eliminar: ");
 				Scanner teclado2 = new Scanner(System.in);
 				String id = teclado2.next();
 				eliminarCliente(id);
 				
 			break;
 			case "3":
-				System.out.println("Ingrese el número de identificación del cliente a editar: ");
+				System.out.println("Ingrese el nï¿½mero de identificaciï¿½n del cliente a editar: ");
 				Scanner teclado3 = new Scanner(System.in);
 				String id3 = teclado3.next();
 				editarCliente(id3);
 				break;
 			case "4":
-				System.out.println("Ingrese el número de identificación del cliente a buscar: ");
+				System.out.println("Ingrese el nï¿½mero de identificaciï¿½n del cliente a buscar: ");
 				Scanner teclado4 = new Scanner(System.in);
 				String id4 = teclado4.next();
 				buscarCliente(id4);
@@ -52,41 +55,45 @@ public class Principal {
 				agregarProducto();
 				break;
 			case "7":
-				System.out.println("Ingrese el código del producto a eliminar: ");
+				System.out.println("Ingrese el cï¿½digo del producto a eliminar: ");
 				Scanner teclado7 = new Scanner(System.in);
 				String codigo1 = teclado7.next();
 				eliminarProducto(codigo1);
 				break;
 			case "8":
-				System.out.println("Ingrese el código del producto a editar: ");
+				System.out.println("Ingrese el cï¿½digo del producto a editar: ");
 				Scanner teclado8 = new Scanner(System.in);
 				String codigo2 = teclado8.next();
 				editarProducto(codigo2);
 				break;
 			case "9":
-				System.out.println("Ingrese el código del producto a buscar: ");
+				System.out.println("Ingrese el cï¿½digo del producto a buscar: ");
 				Scanner teclado9 = new Scanner(System.in);
 				String codigo3 = teclado9.next();
 				buscarProducto(codigo3);
 				
 				break;
 			case "10":
-				realizarPedido();
+				listarProductos();
 				
 				break;
 			case "11":
-				listarProductos();
+				realizarPedido();
+				
 				break;
 			case "12":
-				listarAprobados();
+				listarPedidos();
 				break;
 			case "13":
-				listarRechazados();
+				listarAprobados();
 				break;
 			case "14":
-				listarCobrados();
+				listarRechazados();
 				break;
 			case "15":
+				listarCobrados();
+				break;
+			case "16":
 				listarEntregados();
 				break;
 			default:
@@ -104,21 +111,21 @@ public class Principal {
 		
 		System.out.println("**** MENU PRINCIPAL ****");
 		
-		System.out.println("Administración de clientes");
+		System.out.println("Administraciï¿½n de clientes");
 		System.out.println("1. Agregar.");
 		System.out.println("2. Eliminar.");
 		System.out.println("3. Editar");
 		System.out.println("4. Buscar.");
 		System.out.println("5. Listar");
 		System.out.println();
-		System.out.println("Administración de productos");
+		System.out.println("Administraciï¿½n de productos");
 		System.out.println("6. Agregar.");
 		System.out.println("7. Eliminar.");
 		System.out.println("8. Editar.");
 		System.out.println("9. Buscar.");
 		System.out.println("10. Listar.");
 		System.out.println();
-		System.out.println("Administración de pedidos.");
+		System.out.println("Administraciï¿½n de pedidos.");
 		System.out.println("11. Realizar pedido");
 		System.out.println("12. Listar.");
 		System.out.println("13. Pedidos aprobados.");
@@ -131,21 +138,21 @@ public class Principal {
 	
 	public static  void agregarCliente() {
 		Scanner teclado = new Scanner(System.in);
-		System.out.println("Identificación");
-		String identificacion = teclado.next();
+		System.out.println("Identificaciï¿½n");
+		String identificacion = teclado.nextLine();
 		System.out.println("Nombre");
-		String nombre = teclado.next();
-		System.out.println("Dirección");
-		String direccion = teclado.next();
+		String nombre = teclado.nextLine();
+		System.out.println("Direcciï¿½n");
+		String direccion = teclado.nextLine();
 		System.out.println("Telefono");
-		String telefono = teclado.next();
+		String telefono = teclado.nextLine();
 		System.out.println("Correo");
-		String correo = teclado.next();
+		String correo = teclado.nextLine();
 		
 		System.out.println("Si tiene cuentas ingrese 1, si no ingrese 2");
 		
 		int cuenta = teclado.nextInt();
-		Cuenta[] cuentas = new Cuenta[0];
+		ArrayList<Cuenta> cuentas = new ArrayList<Cuenta>();
 		if(cuenta == 1) {
 			cuentas = anadirCuentas();
 		}
@@ -159,49 +166,49 @@ public class Principal {
 		
 	}
 	
-	public static Cuenta[] anadirCuentas() {
+	public static ArrayList<Cuenta> anadirCuentas() {
 		
 		Scanner teclado = new Scanner(System.in);
 		System.out.println("Ingrese la cantidad de cuentas que tiene.");
 		int cuentas = teclado.nextInt();
 		
-		Cuenta[] lista_cuentas = new Cuenta[cuentas];
+		ArrayList<Cuenta> lista =  new ArrayList<Cuenta>();
 		for(int i=0;i<cuentas;i++) {
-			System.out.println("Ingrese el número de la tarjeta de credito");
+			System.out.println("Ingrese el nï¿½mero de la tarjeta de credito");
 			String numero = teclado.next();
 			System.out.println("Ingrese el dinero de su cuenta");
 			double dinero =teclado.nextDouble();
-			lista_cuentas[i] = new Cuenta(numero, dinero);
-		
+			lista.add(new Cuenta(numero, dinero));
+			
 		}
-		
-		return lista_cuentas;
+		return lista;
 		
 	}
 	
 	public static void eliminarCliente(String identificacion) {
 		for(int i=0;i<clientes.size();i++) {
-			if(identificacion == clientes.get(i).identificacion) {
+			if(identificacion.equals(clientes.get(i).identificacion)) {
 				clientes.remove(i);
+				System.out.println("Cliente eliminado");
 			}
 		}
 	}
 	
 	public static void editarCliente(String identificacion) {
 		for(int i=0;i<clientes.size();i++) {
-			if(identificacion == clientes.get(i).identificacion) {
+			if(identificacion.equals(clientes.get(i).identificacion)) {
 				Scanner teclado = new Scanner(System.in);
 				System.out.println("Editar.");
-				System.out.println("1. Identificación");
+				System.out.println("1. Identificaciï¿½n");
 				System.out.println("2. Nombre.");
-				System.out.println("3. Dirección.");
+				System.out.println("3. Direcciï¿½n.");
 				System.out.println("4. Telefono.");
 				System.out.println("5. Correo.");
 				
 				int input = teclado.nextInt();
 				switch(input) {
 				case 1: 
-					System.out.println("Identificación");
+					System.out.println("Identificaciï¿½n");
 					clientes.get(i).identificacion = teclado.next();
 				break;
 				case 2: 
@@ -209,7 +216,7 @@ public class Principal {
 					clientes.get(i).nombre = teclado.next();
 				break;
 				case 3: 
-					System.out.println("Dirección");
+					System.out.println("Direcciï¿½n");
 					clientes.get(i).direccion = teclado.next();
 				break;
 				case 4: 
@@ -221,7 +228,7 @@ public class Principal {
 					clientes.get(i).correo = teclado.next();
 				break;
 				default:
-					System.out.println("Número equivocado.");
+					System.out.println("Nï¿½mero equivocado.");
 				
 				}
 				
@@ -234,8 +241,9 @@ public class Principal {
 	public static void buscarCliente(String identificacion) {
 		boolean existencia = false;
 		for(int i=0; i<clientes.size();i++) {
-			if(identificacion == clientes.get(i).identificacion) {
-				clientes.get(i).toString();
+			if(identificacion.equals(clientes.get(i).identificacion)) {
+				System.out.println(clientes.get(i).toString());
+				
 				existencia = true;
 			}
 		}
@@ -250,7 +258,7 @@ public class Principal {
 	public static Cliente obtenerCliente(String identificacion) {
 		boolean existencia = false;
 		for(int i=0; i<clientes.size();i++) {
-			if(identificacion == clientes.get(i).identificacion) {
+			if(identificacion.equals(clientes.get(i).identificacion)) {
 				return clientes.get(i);
 				
 			}
@@ -277,7 +285,7 @@ public class Principal {
 		Scanner teclado = new Scanner(System.in);
 		
 		System.out.println("Por favor");
-		System.out.println("Ingrese el código del producto");
+		System.out.println("Ingrese el cï¿½digo del producto");
 		String codigo = teclado.next();
 		
 		System.out.println("Precio de compra");
@@ -292,10 +300,10 @@ public class Principal {
 		System.out.println("Cantidad minima");
 		int cantidad_minima = teclado.nextInt();
 		
-		System.out.println("¿Tiene IVA? SI / NO");
+		System.out.println("ï¿½Tiene IVA? SI / NO");
 		String iva = teclado.next();
 		boolean tieneIva = false;
-		if(iva.toUpperCase() == "SI") {
+		if(iva.toUpperCase().equals("SI")) {
 			tieneIva = true;
 		}
 		
@@ -306,7 +314,7 @@ public class Principal {
 	
 	public static void eliminarProducto(String codigo) {
 		for(int i=0;i<productos.size();i++) {
-			if(codigo == productos.get(i).codigo) {
+			if(codigo.equals(productos.get(i).codigo)) {
 				productos.remove(i);
 				System.out.println("Producto eliminado.");
 			}
@@ -315,10 +323,10 @@ public class Principal {
 	
 	public static void editarProducto(String codigo) {
 		for(int i=0;i<productos.size();i++) {
-			if(codigo == productos.get(i).codigo) {
+			if(codigo.equals(productos.get(i).codigo)) {
 				Scanner teclado = new Scanner(System.in);
 				System.out.println("Editar.");
-				System.out.println("1. Código.");
+				System.out.println("1. Cï¿½digo.");
 				System.out.println("2. Precio de compra.");
 				System.out.println("3. Precio de venta..");
 				System.out.println("4. Cantidad bodega.");
@@ -327,7 +335,7 @@ public class Principal {
 				int input = teclado.nextInt();
 				switch(input) {
 				case 1: 
-					System.out.println("Código");
+					System.out.println("Cï¿½digo");
 					productos.get(i).codigo = teclado.next();
 				break;
 				case 2: 
@@ -347,7 +355,7 @@ public class Principal {
 					productos.get(i).cantidad_minima = teclado.nextInt();
 				break;
 				default:
-					System.out.println("Número equivocado.");
+					System.out.println("Nï¿½mero equivocado.");
 				
 				}
 				
@@ -361,8 +369,8 @@ public class Principal {
 	public static void buscarProducto(String codigo) {
 		boolean existencia = false;
 		for(int i=0; i<productos.size();i++) {
-			if(codigo == productos.get(i).codigo) {
-				productos.get(i).toString();
+			if(codigo.equals(productos.get(i).codigo)) {
+				System.out.println(productos.get(i).toString());
 				existencia = true;
 			}
 		}
@@ -375,7 +383,7 @@ public class Principal {
 	public static Producto obtenerProducto(String codigo) {
 		boolean existencia = false;
 		for(int i=0; i<productos.size();i++) {
-			if(codigo == productos.get(i).codigo) {
+			if(codigo.equals(productos.get(i).codigo)) {
 				productos.get(i).toString();
 				existencia = true;
 				return productos.get(i);
@@ -392,20 +400,20 @@ public class Principal {
 	
 	public static void listarProductos() {
 		for(int i = 0; i<productos.size();i++) {
-			productos.get(i).toString();
+			System.out.println(productos.get(i).toString());
 		}
 	}
 	
 	public static void realizarPedido() {
 		Scanner teclado = new Scanner(System.in);
-		System.out.println("Ingrese el código de cliente: ");
+		System.out.println("Ingrese el cï¿½digo de cliente: ");
 		System.out.println();
 		String codigo_cliente = teclado.next();
 		
 		Cliente cliente = obtenerCliente(codigo_cliente);
 		
 		if(cliente.identificacion=="0") {
-			System.out.println("Identificación inválida.");
+			System.out.println("Identificaciï¿½n invï¿½lida.");
 			System.exit(0);
 		}
 		boolean otro = true;
@@ -418,7 +426,7 @@ public class Principal {
 		
 		
 		while(otro==true) {
-			System.out.println("Ingrese el código del producto:");
+			System.out.println("Ingrese el cï¿½digo del producto:");
 			System.out.println();
 			
 			String codigo_producto = teclado.next();
@@ -438,21 +446,21 @@ public class Principal {
 				}
 				
 			}else {
-				System.out.println("Ningún producto corresponde al código ingresado.");
+				System.out.println("Ningï¿½n producto corresponde al cï¿½digo ingresado.");
 				estado_pedido = "Rechazado";
 			}
 			
 		Scanner teclado2 = new Scanner(System.in);
-		System.out.println("Desea agregar un producto más a su pedido?");
-		System.out.println("1. Si.");
-		System.out.println("2. No.");
+		System.out.println("Desea agregar un producto mï¿½s a su pedido?");
+		System.out.println("Si/No");
+		System.out.println();
 		String entrada = teclado2.next();
-		if(entrada.toLowerCase()=="si") {
+		if(entrada.toLowerCase().equals("si")) {
 			otro = true;
-		}else if(entrada.toLowerCase() == "no") {
+		}else if(entrada.toLowerCase().equals("no")) {
 			otro = false;
 		}else {
-			System.out.println("Entrada inválida.");
+			System.out.println("Entrada invï¿½lida.");
 		}
 		
 
@@ -465,6 +473,7 @@ public class Principal {
 		Pedido nuevo_pedido = new Pedido(cliente,subpedidos,estado_pedido);
 		
 		pedidos.add(nuevo_pedido);	
+		System.out.println("Pedido agregado");
 	}
 	
 	
@@ -472,7 +481,10 @@ public class Principal {
 	public static void listarPedidos() {
 		System.out.println("*******  PEDIDOS ******");
 		for(int i = 0; i<pedidos.size();i++) {
+			System.out.println("****    PEDIDO "+(i+1)+"     ******");
 			pedidos.get(i).generarInforme();
+			System.out.println();
+			System.out.println();
 		}
 	}
 	
@@ -480,7 +492,10 @@ public class Principal {
 	public static void listarAprobados() {
 		System.out.println("*******  PEDIDOS APROBADOS  ******");
 		for(int i = 0; i<pedidos.size();i++) {
+			
 			pedidos.get(i).generarInforme();
+			System.out.println();
+			System.out.println();
 		}
 	}
 	
@@ -488,8 +503,10 @@ public class Principal {
 	public static void listarRechazados() {
 		System.out.println("*******  PEDIDOS RECHAZADOS  ******");
 		for(int i = 0; i<pedidos.size();i++) {
-			if(pedidos.get(i).estado=="rechazado") {
+			if(pedidos.get(i).estado.equals("rechazado")) {
 				pedidos.get(i).generarInforme();
+				System.out.println();
+				System.out.println();
 			}
 			
 		}
@@ -499,8 +516,10 @@ public class Principal {
 	public static void listarCobrados() {
 		System.out.println("*******  PEDIDOS COBRADOS  ******");
 		for(int i = 0; i<pedidos.size();i++) {
-			if(pedidos.get(i).estado=="cobrado") {
+			if(pedidos.get(i).estado.equals("cobrado")) {
 				pedidos.get(i).generarInforme();
+				System.out.println();
+				System.out.println();
 			}
 		}
 	}
@@ -509,16 +528,15 @@ public class Principal {
 	public static void listarEntregados() {
 		System.out.println("*******  PEDIDOS ENTREGADOS  ******");
 		for(int i = 0; i<pedidos.size();i++) {
-			if(pedidos.get(i).estado=="entregado") {
+			if(pedidos.get(i).estado.equals("entregado")) {
 				pedidos.get(i).generarInforme();
+				System.out.println();
+				System.out.println();
 			}
 		}
 	}
 	
-	public void cargarInformacionPrueba() {
-		
-		
-		
+	public static void cargarInformacionPrueba() {
 		
 		//Cuentas
 		Cuenta cuenta1 = new Cuenta("123",1000);
@@ -528,13 +546,13 @@ public class Principal {
 		Cuenta cuenta5 = new Cuenta("111",10000000);
 		Cuenta cuenta6 = new Cuenta("121",100000000);
 		
-		//Definición de cuentas
+		//Definiciï¿½n de cuentas
 		
 		ArrayList<Cuenta> cuentas1 = new ArrayList<Cuenta>();
 		ArrayList<Cuenta> cuentas2 = new ArrayList<Cuenta>();
 		ArrayList<Cuenta> cuentas3 = new ArrayList<Cuenta>();
 				
-		//Asignación de valores.
+		//Asignaciï¿½n de valores.
 		
 		cuentas1.add(cuenta1);
 		cuentas1.add(cuenta4);
@@ -580,6 +598,56 @@ public class Principal {
 		//Pedidos
 		
 		Pedido ped1 = new Pedido(c1,subpedidos1);
+		
+		HashMap<Producto,Double> subpedidos2 = new HashMap();
+		subpedidos2.put(p1, 5.0);
+		subpedidos2.put(p2, 10.0);
+		subpedidos2.put(p5, 1.0);
+		subpedidos2.put(p6, 1.0);
+		subpedidos2.put(p8, 3.0);
+	
+		//Pedidos
+	
+		Pedido ped2 = new Pedido(c2,subpedidos2);
+		
+		HashMap<Producto,Double> subpedidos3 = new HashMap();
+		subpedidos3.put(p4, 5.0);
+		subpedidos3.put(p7, 10.0);
+		subpedidos3.put(p8, 1.0);
+		subpedidos3.put(p9, 1.0);
+		subpedidos3.put(p10, 3.0);
+	
+		//Pedidos
+	
+		Pedido ped3 = new Pedido(c4,subpedidos3);
+		
+		//Asignaciones
+			//clientes
+			clientes.add(c1);
+			clientes.add(c2);
+			clientes.add(c3);
+			clientes.add(c4);
+			clientes.add(c5);
+		
+			//productos
+			productos.add(p1);
+			productos.add(p2);
+			productos.add(p3);
+			productos.add(p4);
+			productos.add(p5);
+			productos.add(p6);
+			productos.add(p7);
+			productos.add(p8);
+			productos.add(p9);
+			productos.add(p10);
+		
+			//pedidos
+			
+			pedidos.add(ped1);
+			pedidos.add(ped2);
+			pedidos.add(ped3);
+			
+		
 	
 	}
 
