@@ -14,6 +14,8 @@ public class Pedido {
 		this.cliente = cliente;
 		this.subpedidos = lista_subpedidos;
 		this.estado = "Aprobado";// aprobados    cobrados entregados.
+                this.generarInforme();
+		administrar();
 	}
 	
 	public Pedido(Cliente cliente, HashMap <Producto, Double> lista_subpedidos, String estado) {
@@ -21,21 +23,24 @@ public class Pedido {
 		this.cliente = cliente;
 		this.subpedidos = lista_subpedidos;
 		this.estado = estado.toLowerCase();// aprobados    cobrados entregados.
+                this.generarInforme();
 		administrar();
 	}
 	
 	public void administrar() {
-		if(estado.equals("Aprobado")){
-			if(cliente.cuentas.size()>=0) {
+		if(estado.equals("aprobado")){
+			if(cliente.cuentas.size()>0) {
 				if(cliente.cuentaMayorDinero()>=total_con_iva) {
-					estado = "cobrado";
+					this.estado = "cobrado";
 				}else {
-					estado = "rechazado";
+					this.estado = "rechazado";
 				}
 			}else {
-				estado ="rechazado";
+				this.estado ="rechazado";
 			}
-		}
+		}else{
+                    System.out.println("Rechazado");
+                }
 		
 	}
 	

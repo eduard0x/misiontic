@@ -43,7 +43,7 @@ public class Producto {
 		return precio_compra;
 	}
 
-	public void setPrecio_compra(int precio_compra) {
+	public void setPrecio_compra(double precio_compra) {
 		this.precio_compra = precio_compra;
 	}
 
@@ -51,7 +51,7 @@ public class Producto {
 		return precio_venta;
 	}
 
-	public void setPrecio_venta(int precio_venta) {
+	public void setPrecio_venta(double precio_venta) {
 		this.precio_venta = precio_venta;
 	}
 
@@ -59,7 +59,7 @@ public class Producto {
 		return cantidad_bodega;
 	}
 
-	public void setCantidad_bodega(int cantidad_bodega) {
+	public void setCantidad_bodega(double cantidad_bodega) {
 		this.cantidad_bodega = cantidad_bodega;
 	}
 
@@ -67,7 +67,7 @@ public class Producto {
 		return cantidad_minima;
 	}
 
-	public void setCantidad_minima(int cantidad_minima) {
+	public void setCantidad_minima(double cantidad_minima) {
 		this.cantidad_minima = cantidad_minima;
 	}
 
