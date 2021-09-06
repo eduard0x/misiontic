@@ -286,9 +286,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
-        jLabel25 = new javax.swing.JLabel();
         tf_id2 = new javax.swing.JTextField();
-        tf_nombre3 = new javax.swing.JTextField();
+        tf_nombre_cliente2 = new javax.swing.JTextField();
         tf_correo2 = new javax.swing.JTextField();
         tf_direccion2 = new javax.swing.JTextField();
         tf_tel2 = new javax.swing.JTextField();
@@ -300,8 +299,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         button_buscar_cliente2 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        button_cancelar_2 = new javax.swing.JButton();
+        button_editar_2 = new javax.swing.JButton();
+        button_eliminar2 = new javax.swing.JButton();
 
         jLabel16.setText("jLabel16");
 
@@ -333,7 +333,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.setBackground(new java.awt.Color(204, 255, 255));
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 0));
         jTabbedPane1.setForeground(new java.awt.Color(0, 0, 102));
 
         jPanel3.setBackground(new java.awt.Color(0, 0, 255));
@@ -386,6 +386,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(table_productos);
 
+        button_registrar_producto.setBackground(new java.awt.Color(255, 255, 0));
+        button_registrar_producto.setForeground(new java.awt.Color(0, 0, 204));
         button_registrar_producto.setText("REGISTRAR");
         button_registrar_producto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -405,6 +407,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel22.setText("IVA");
 
+        button_buscar_producto.setBackground(new java.awt.Color(255, 255, 0));
+        button_buscar_producto.setForeground(new java.awt.Color(0, 0, 204));
         button_buscar_producto.setText("BUSCAR");
         button_buscar_producto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -412,6 +416,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        button_editar_producto.setBackground(new java.awt.Color(255, 255, 0));
+        button_editar_producto.setForeground(new java.awt.Color(0, 0, 204));
         button_editar_producto.setText("EDITAR");
         button_editar_producto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -419,6 +425,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        button_eliminar_producto.setBackground(new java.awt.Color(255, 255, 0));
+        button_eliminar_producto.setForeground(new java.awt.Color(0, 0, 204));
         button_eliminar_producto.setText("ELIMINAR");
         button_eliminar_producto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -426,6 +434,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        button_cancelar_producto.setBackground(new java.awt.Color(255, 255, 0));
+        button_cancelar_producto.setForeground(new java.awt.Color(0, 0, 204));
         button_cancelar_producto.setText("CANCELAR");
         button_cancelar_producto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -541,6 +551,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 "Id cliente", "Detalles Productos", "Total sin iva", "Total con iva", "Estado"
             }
         ));
+        table_pedidos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_pedidosMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(table_pedidos);
 
         jLabel9.setText("Nuevo Pedido");
@@ -551,6 +566,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        button_registrar_pedido.setBackground(new java.awt.Color(255, 255, 0));
+        button_registrar_pedido.setForeground(new java.awt.Color(0, 0, 204));
         button_registrar_pedido.setText("REGISTRAR");
         button_registrar_pedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -800,6 +817,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 "Identificación", "Nombre ", "Dirección", "Telefono", "Correo electronico"
             }
         ));
+        table_clientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_clientesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(table_clientes);
 
         jLabel4.setText("Nuevo cliente");
@@ -938,13 +960,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(57, Short.MAX_VALUE))
         );
 
-        jLabel25.setText("Nuevo cliente");
-
         tf_id2.setToolTipText("hola");
-
-        tf_nombre3.addActionListener(new java.awt.event.ActionListener() {
+        tf_id2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_nombre3ActionPerformed(evt);
+                tf_id2ActionPerformed(evt);
+            }
+        });
+
+        tf_nombre_cliente2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_nombre_cliente2ActionPerformed(evt);
             }
         });
 
@@ -966,6 +991,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        button_registrar2.setBackground(new java.awt.Color(255, 255, 0));
+        button_registrar2.setForeground(new java.awt.Color(0, 0, 204));
         button_registrar2.setText("REGISTRAR");
         button_registrar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -983,14 +1010,39 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel30.setText("Correo");
 
+        button_buscar_cliente2.setBackground(new java.awt.Color(255, 255, 0));
+        button_buscar_cliente2.setForeground(new java.awt.Color(0, 0, 204));
         button_buscar_cliente2.setText("BUSCAR");
-
-        jButton6.setText("CANCELAR");
-
-        jButton7.setText("EDITAR");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        button_buscar_cliente2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                button_buscar_cliente2ActionPerformed(evt);
+            }
+        });
+
+        button_cancelar_2.setBackground(new java.awt.Color(255, 255, 0));
+        button_cancelar_2.setForeground(new java.awt.Color(0, 0, 204));
+        button_cancelar_2.setText("CANCELAR");
+        button_cancelar_2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_cancelar_2ActionPerformed(evt);
+            }
+        });
+
+        button_editar_2.setBackground(new java.awt.Color(255, 255, 0));
+        button_editar_2.setForeground(new java.awt.Color(0, 0, 204));
+        button_editar_2.setText("EDITAR");
+        button_editar_2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_editar_2ActionPerformed(evt);
+            }
+        });
+
+        button_eliminar2.setBackground(new java.awt.Color(255, 255, 0));
+        button_eliminar2.setForeground(new java.awt.Color(0, 0, 204));
+        button_eliminar2.setText("ELIMINAR");
+        button_eliminar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_eliminar2ActionPerformed(evt);
             }
         });
 
@@ -1001,77 +1053,73 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(tf_tel2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel25)
-                                .addComponent(jLabel27)
-                                .addComponent(tf_nombre3, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(tf_id2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel9Layout.createSequentialGroup()
-                                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                                .addGap(15, 15, 15)
-                                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(jPanel9Layout.createSequentialGroup()
-                                                        .addGap(83, 83, 83)
-                                                        .addComponent(label_notificacion3))
-                                                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addComponent(button_buscar_cliente2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                                                .addGap(0, 0, Short.MAX_VALUE)
-                                                .addComponent(button_registrar2))))
-                                    .addComponent(tf_correo2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(tf_tel2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel27)
+                            .addComponent(tf_nombre_cliente2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_id2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addGap(98, 98, 98)
+                                .addComponent(label_notificacion3))
+                            .addComponent(tf_correo2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel30)
                             .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(tf_direccion2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addComponent(button_buscar_cliente2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(button_registrar2))
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addComponent(button_editar_2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(button_eliminar2)))
                         .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(button_cancelar_2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel25)
-                .addGap(2, 2, 2)
+                .addContainerGap()
                 .addComponent(jLabel26)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tf_id2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel27)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tf_nombre3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tf_nombre_cliente2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel28)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tf_direccion2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel29)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tf_tel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel30)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tf_correo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(button_registrar2)
-                    .addComponent(button_buscar_cliente2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7))
+                    .addComponent(button_buscar_cliente2)
+                    .addComponent(button_registrar2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(button_editar_2)
+                    .addComponent(button_eliminar2))
+                .addGap(2, 2, 2)
+                .addComponent(button_cancelar_2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(label_notificacion3)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -1082,7 +1130,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(3, 3, 3)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1203,11 +1251,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_tf_ivaActionPerformed
 
     private void button_registrar_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_registrar_productoActionPerformed
-        String codigo = tf_cantidad_minima.getText();
+        String codigo = tf_codigo_producto.getText();
         double pc = Double.parseDouble(tf_precio_compra.getText());
         double pv = Double.parseDouble(tf_precio_venta.getText());
         double cb = Double.parseDouble(tf_cantidad_requerida.getText());
-        double cmb = Double.parseDouble(tf_codigo_producto.getText());
+        double cmb = Double.parseDouble(tf_cantidad_minima.getText());
         boolean iva = true;
         if(tf_iva.getText().toLowerCase().equals("si")){
             iva = true;
@@ -1301,9 +1349,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void tf_nombre3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_nombre3ActionPerformed
+    private void tf_nombre_cliente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_nombre_cliente2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tf_nombre3ActionPerformed
+    }//GEN-LAST:event_tf_nombre_cliente2ActionPerformed
 
     private void tf_correo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_correo2ActionPerformed
         // TODO add your handling code here:
@@ -1318,12 +1366,62 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_tf_tel2ActionPerformed
 
     private void button_registrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_registrar2ActionPerformed
-        // TODO add your handling code here:
+        String id = tf_id2.getText();
+        String nombre = tf_nombre_cliente2.getText();
+        String direccion = tf_direccion2.getText();
+        String telefono = tf_tel2.getText();
+        String correo = tf_correo2.getText();
+        ArrayList<Cuenta> cuentas = new ArrayList<Cuenta>();
+        Cliente nuevo_cliente = new Cliente(id,nombre,direccion,telefono,correo,cuentas);
+        tienda.clientes.add(nuevo_cliente);
+        
+        label_notificacion.setText("Nuevo cliente agregado correctamente");
+        DefaultTableModel modelo = (DefaultTableModel) table_clientes.getModel();
+        
+        String[] registro = new String[5];
+        registro[0] = nuevo_cliente.identificacion;
+        registro[1] = nuevo_cliente.nombre;
+        registro[2] = nuevo_cliente.direccion;
+        registro[3] = nuevo_cliente.telefono;
+        registro[4] = nuevo_cliente.correo;
+        
+        modelo.addRow(registro);
     }//GEN-LAST:event_button_registrar2ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    private void button_editar_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_editar_2ActionPerformed
+        //Editar cliente
+        Cliente cliente_seleccionado = this.tienda.getClientes().get(table_clientes.getSelectedRow());
+        System.out.println(cliente_seleccionado);
+        
+        
+        String id =  tf_id2.getText(); //producto_seleccionado.getCodigo();
+        String nombre = tf_nombre_cliente2.getText();//producto_seleccionado.getPrecio_compra()+"";
+        String telefono =  tf_tel2.getText(); //producto_seleccionado.getPrecio_venta()+"";
+        String direccion = tf_direccion2.getText();// producto_seleccionado.getCantidad_bodega()+"";
+        String correo = tf_correo2.getText(); //producto_seleccionado.getCantidad_minima()+"";
+        
+        
+        int index = this.tienda.getClientes().indexOf(cliente_seleccionado);
+        
+        this.tienda.clientes.get(index).setIdentificacion(id);
+        this.tienda.clientes.get(index).setNombre(nombre);
+        this.tienda.clientes.get(index).setTelefono(telefono);
+        this.tienda.clientes.get(index).setDireccion(direccion);
+        this.tienda.clientes.get(index).setCorreo(correo);
+        
+        
+        DefaultTableModel modelo = (DefaultTableModel) table_clientes.getModel();
+        modelo.removeRow(index);
+        
+        String[] registro = new String[5];
+        registro[0] = this.tienda.clientes.get(index).getIdentificacion();
+        registro[1] = this.tienda.clientes.get(index).getNombre();
+        registro[2] = this.tienda.clientes.get(index).getTelefono();
+        registro[3] = this.tienda.clientes.get(index).getDireccion();
+        registro[4] = this.tienda.clientes.get(index).getCorreo();
+       
+        modelo.addRow(registro);
+    }//GEN-LAST:event_button_editar_2ActionPerformed
 
     private void button_buscar_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_buscar_productoActionPerformed
         // TODO add your handling code here:
@@ -1378,12 +1476,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void button_editar_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_editar_productoActionPerformed
         Producto producto_seleccionado = this.tienda.getProductos().get(table_productos.getSelectedRow());
-        String codigo = producto_seleccionado.getCodigo();
-        String precio_compra = producto_seleccionado.getPrecio_compra()+"";
-        String precio_venta = producto_seleccionado.getPrecio_venta()+"";
-        String cantidad_bodega = producto_seleccionado.getCantidad_bodega()+"";
-        String cantidad_minima = producto_seleccionado.getCantidad_minima()+"";
-        String iva = producto_seleccionado.IVA+"";
+        System.out.println(producto_seleccionado);
+        
+        
+        String codigo =  tf_codigo_producto.getText(); //producto_seleccionado.getCodigo();
+        String precio_compra = tf_precio_compra.getText();//producto_seleccionado.getPrecio_compra()+"";
+        String precio_venta =  tf_precio_venta.getText(); //producto_seleccionado.getPrecio_venta()+"";
+        String cantidad_bodega = tf_cantidad_requerida.getText();// producto_seleccionado.getCantidad_bodega()+"";
+        String cantidad_minima = tf_cantidad_minima.getText(); //producto_seleccionado.getCantidad_minima()+"";
+        String iva = tf_iva.getText(); //producto_seleccionado.IVA+"";
         
         int index = this.tienda.getProductos().indexOf(producto_seleccionado);
         
@@ -1407,6 +1508,89 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         modelo.addRow(registro);
     }//GEN-LAST:event_button_editar_productoActionPerformed
+
+    private void button_buscar_cliente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_buscar_cliente2ActionPerformed
+        System.out.println("Buscar");
+    }//GEN-LAST:event_button_buscar_cliente2ActionPerformed
+
+    private void table_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_clientesMouseClicked
+        Cliente cliente_seleccionado = this.tienda.getClientes().get(table_clientes.getSelectedRow());
+        
+        
+        String id = cliente_seleccionado.getIdentificacion();
+        String nombre  = cliente_seleccionado.getNombre();
+        String telefono  = cliente_seleccionado.getTelefono();
+        String direccion  = cliente_seleccionado.getDireccion();
+        String correo  = cliente_seleccionado.getCorreo();
+        
+        tf_id2.setText(id);
+        tf_nombre_cliente2.setText(nombre);
+        tf_tel2.setText(telefono);
+        tf_direccion2.setText(direccion);
+        tf_correo2.setText(correo);
+        
+        
+        deshabilitar_botones_cliente();
+    }//GEN-LAST:event_table_clientesMouseClicked
+
+    private void button_eliminar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_eliminar2ActionPerformed
+        //Eliminar cliente
+        
+        Cliente cliente_seleccionado = this.tienda.getClientes().get(table_clientes.getSelectedRow());
+        String id = cliente_seleccionado.getIdentificacion();
+        for(int i=0;i<this.tienda.getClientes().size();i++){
+            if(cliente_seleccionado.identificacion.equals(this.tienda.getClientes().get(i).identificacion)){
+                this.tienda.getClientes().remove(i);
+                
+                //Delete modelTABLE
+                 DefaultTableModel modelo = (DefaultTableModel) table_clientes.getModel();
+                 modelo.removeRow(i);
+               
+                System.out.println("Si se eliminó");
+            }
+            System.out.println("No se eliminó");
+            //System.out.println(producto_seleccionado.codigo);
+            //System.out.println(this.tienda.getProductos().get(i));
+        }
+        
+    }//GEN-LAST:event_button_eliminar2ActionPerformed
+
+    private void button_cancelar_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_cancelar_2ActionPerformed
+        vaciar_tabla_clientes();
+        habilitar_botones_cliente();
+    }//GEN-LAST:event_button_cancelar_2ActionPerformed
+
+    private void tf_id2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_id2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_id2ActionPerformed
+
+    private void table_pedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_pedidosMouseClicked
+        //Tabla pedidos.
+        Pedido pedido_seleccionado = this.tienda.getPedidos().get(table_pedidos.getSelectedRow());
+        
+        
+        String id_cliente = pedido_seleccionado.getCliente().identificacion;
+        String detalles  = "Detalles";
+        String total_sin_iva = pedido_seleccionado.getTotal_sin_iva()+"";
+        String total_con_iva  = pedido_seleccionado.getTotal_con_iva()+"";
+        String estado = pedido_seleccionado.getEstado();
+        
+        //Cliente c = cb_clientes.getItemAt(cb_clientes.getSelectedIndex());
+        
+        
+        String informe = pedido_seleccionado.generarInforme();
+        
+        DetallesPedido detallePedido = new DetallesPedido();
+        detallePedido.setDetalles(informe);
+        detallePedido.setVisible(true);
+        
+        
+        
+        
+        deshabilitar_botones_cliente();
+        
+        
+    }//GEN-LAST:event_table_pedidosMouseClicked
     //start new code
     public void vaciar_tabla_productos(){
         tf_cantidad_minima.setText("");
@@ -1415,6 +1599,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         tf_cantidad_requerida.setText("");
         tf_codigo_producto.setText("");
         tf_iva.setText("");
+    }
+    
+    public void vaciar_tabla_clientes(){
+        tf_id2.setText("");
+        tf_nombre_cliente2.setText("");
+        tf_tel2.setText("");
+        tf_direccion2.setText("");
+        tf_correo2.setText("");
     }
     //end new code
     public void habilitar_botones(){
@@ -1431,6 +1623,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         button_editar_producto.setEnabled(true);
         button_buscar_producto.setEnabled(false);
         button_eliminar_producto.setEnabled(true);
+    }
+    
+    public void habilitar_botones_cliente(){
+        button_cancelar_2.setEnabled(false);
+        button_registrar2.setEnabled(true);
+        button_editar_2.setEnabled(false);
+        button_buscar_cliente2.setEnabled(true);
+        button_eliminar2.setEnabled(false);
+    }
+    
+    public void deshabilitar_botones_cliente(){
+        button_cancelar_2.setEnabled(true);
+        button_registrar2.setEnabled(false);
+        button_editar_2.setEnabled(true);
+        button_buscar_cliente2.setEnabled(false);
+        button_eliminar2.setEnabled(true);
     }
     
     
@@ -1477,8 +1685,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton button_buscar_cliente1;
     private javax.swing.JButton button_buscar_cliente2;
     private javax.swing.JButton button_buscar_producto;
+    private javax.swing.JButton button_cancelar_2;
     private javax.swing.JButton button_cancelar_producto;
+    private javax.swing.JButton button_editar_2;
     private javax.swing.JButton button_editar_producto;
+    private javax.swing.JButton button_eliminar2;
     private javax.swing.JButton button_eliminar_producto;
     private javax.swing.JButton button_registrar;
     private javax.swing.JButton button_registrar1;
@@ -1490,8 +1701,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1509,7 +1718,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
@@ -1559,7 +1767,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField tf_nombre;
     private javax.swing.JTextField tf_nombre1;
     private javax.swing.JTextField tf_nombre2;
-    private javax.swing.JTextField tf_nombre3;
+    private javax.swing.JTextField tf_nombre_cliente2;
     private javax.swing.JTextField tf_precio_compra;
     private javax.swing.JTextField tf_precio_venta;
     private javax.swing.JTextField tf_tel;

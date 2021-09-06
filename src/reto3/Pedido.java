@@ -63,8 +63,8 @@ public class Pedido {
 		this.estado = estado;
 	}
 	
-	public void generarInforme() {
-		
+	public String generarInforme() {
+		String informe = "";
 		double total_factura_sin_iva = 0;
 		double total_factura_con_iva = 0;
 		
@@ -79,6 +79,8 @@ public class Pedido {
 			
 			System.out.println(producto_a_vender.codigo);
 			System.out.println(unidades);
+                        informe += "Subtotal sin IVA: "+subtotal_sin+"\n";
+                        informe += "Subtotal con IVA: "+subtotal_con+"\n";
 			System.out.println("Subtotal sin IVA: "+subtotal_sin);
 			System.out.println("Subtotal con IVA: "+subtotal_con);
 			total_factura_sin_iva += subtotal_sin;
@@ -88,15 +90,40 @@ public class Pedido {
 		
 		this.total_sin_iva = total_factura_sin_iva;
 		this.total_con_iva = total_factura_con_iva;
+                
 		
+                
+                informe += "PRECIO TOTAL SIN IVA: "+ total_factura_sin_iva+"\n";
+                informe += "PRECIO TOTAL CON IVA: "+ total_factura_con_iva+"\n";
+                
 		System.out.println("PRECIO TOTAL SIN IVA: "+ total_factura_sin_iva );
 		System.out.println("PRECIO TOTAL CON IVA: "+ total_factura_con_iva);
 		
+                informe += "\n";
 		System.out.println();
 	
-		System.out.println("Estado: "+estado);
+		informe += "Estado: "+estado;
+                System.out.println("Estado: "+estado);
+                
+                return informe;
 		
 	}
+
+    public double getTotal_sin_iva() {
+        return total_sin_iva;
+    }
+
+    public void setTotal_sin_iva(double total_sin_iva) {
+        this.total_sin_iva = total_sin_iva;
+    }
+
+    public double getTotal_con_iva() {
+        return total_con_iva;
+    }
+
+    public void setTotal_con_iva(double total_con_iva) {
+        this.total_con_iva = total_con_iva;
+    }
 	
 	
 	
