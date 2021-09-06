@@ -58,9 +58,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 		//Asignaci�n de valores.
 		
 		
+		cuentas3.add(cuenta5);
+		
 		cuentas2.add(cuenta6);
-		
-		
 		cuentas1.add(cuenta5);
 		cuentas1.add(cuenta2);
 		
